@@ -1,0 +1,18 @@
+# Site settings
+title: AI Programming II
+email: dwysocki@oswego.edu
+description: >
+  Dan Wysocki's course page for the Spring 2015 section of
+  AI Programming II (CSC466).
+baseurl: "/csc466"
+url: "http://dwysocki.github.io/csc466/"
+github_username: dwysocki
+
+# Build settings
+markdown: kramdown
+kramdown:
+  default_lang: common-lisp
+  use_coderay: true
+highlighter: pygments
+
+exclude: ["*.Rmd"]
