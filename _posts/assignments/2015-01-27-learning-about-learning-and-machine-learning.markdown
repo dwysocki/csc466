@@ -2,7 +2,7 @@
 layout: post
 category: assignments
 title: "Learning about Learning and Machine Learning"
-date: 2015-01-29T14:20:01-05:00
+date: 2015-01-29T14:20:00-05:00
 ---
 
 1. Learning:

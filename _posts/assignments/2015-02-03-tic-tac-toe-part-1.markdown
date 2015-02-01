@@ -2,7 +2,7 @@
 layout: post
 category: assignments
 title: "Tic-tac-toe (Part 1)"
-date: 2015-01-29T14:20:00-05:00
+date: 2015-02-03T14:20:00-05:00
 ---
 
 # Code
