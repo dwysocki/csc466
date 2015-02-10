@@ -9,6 +9,124 @@
                         (0 4 8)
                         (2 4 6)))
 
+(defclass player ()
+  ((name :accessor player-name :initarg :name :initform 'emanon)))
+
+(defclass random-machine-player (player) ())
+(defclass human-player (player) ())
+
+(defmethod display ((p random-machine-player))
+  (format t "RANDOM MACHINE PLAYER ...~%")
+  (format t "name = ~A~%" (player-name p))
+  (terpri)
+  nil)
+
+(defmethod display ((p human-player))
+  (format t "HUMAN PLAYER ...~%")
+  (format t "name = ~A~%" (player-name p))
+  (terpri)
+  nil)
+
+(defmethod make-move ((p random-machine-player) (report t))
+  (let ((move (select *avail*)))
+    (when report
+      (format t "BEGIN RANDOM PLAYER MOVE ...~%")
+      (format t "randomly selecting ~A for my move ~%" move)
+      (format t "END RANDOM PLAYER MOVE ...~%"))
+    (setf *avail* (remove move *avail*))
+    move))
+
+(defmethod make-move ((p human-player) (report t))
+  (when report
+    (format t "BEGIN HUMAN PLAYER MOVE ...~%"))
+  (format t "Please select a move from ~A~%" *avail*)
+  (let ((move (read)))
+    (if (not (member move *avail))
+      (make-move p)
+      (setf *avail* (remove move *avail*)))
+    (when report
+      (format t "END HUMAN PLAYER MOVE~%"))
+    move))
+
+(defmethod generic-play ((x player) (o player) (report t) &aux move)
+  (setf *avail*       '(nw n ne w c e sw s se))
+  (setf *play-so-far* ())
+  (dolist (player '(x o x o x o x o x))
+    (when (or report (equal (type-of o) 'human-player-machine))
+      (visualize *play-so-far*))
+    (cond
+     ((eq player 'x) (setf move (make-move x report)))
+     ((eq player 'o) (setf move (make-move o report)))))
+  *play-so-far*)
+
+(defmethod game-over-p ((play list))
+  (cond
+   ((line-p (odd play))  'w)
+   ((line-p (even play)) 'l)
+   ((= (length play) 9)  'd)))
+
+(defmethod odd ((l list))
+  (cond
+   ((null l) ())
+   ((null (cdr l)) (list (car l)))
+   (t (cons (car l)
+            (odd (cddr l))))))
+
+(defmethod even ((l list))
+  (cond
+   ((null l) ())
+   ((null (cdr l)) ())
+   (t (cons (cadr l)
+            (even (cddr l))))))
+
+(defmethod line-p ((l list))
+  (cond
+   ((< (length l) 3)
+    nil)
+
+   ((= (length l) 3)
+    (line (first  l)
+          (second l)
+          (third  l)))
+
+   ((= (length l) 4)
+    (or
+     (line (first l)  (second l) (third l))
+     (line (first l)  (second l) (fourth l))
+     (line (first l)  (third l)  (fourth l))
+     (line (second l) (third l)  (fourth l))))
+
+   ((= (length l) 5)
+    (or
+     (line (first l)  (second l) (third l))
+     (line (first l)  (second l) (fourth l))
+     (line (first l)  (second l) (fifth l))
+     (line (first l)  (third l)  (fourth l))
+     (line (first l)  (third l)  (fifth l))
+     (line (second l) (third l)  (fourth l))
+     (line (second l) (third l) (fifth l))
+     (line (second l) (fourth l) (fifth l))
+     (line (third l) (fourth l) (fifth l))))))
+
+(defmethod demo-random-random ()
+  (let* ((x (make-instance 'random-machine-player))
+         (o (make-instance 'random-machine-player))
+         (p (generic-play x o t)))
+    (format t "~A~%" p)
+    (visualize p)
+    (format t "~A~%" (analyze p))
+    nil))
+
+(defmethod demo-random-human ()
+  (let* ((x (make-instance 'random-machine-player))
+         (o (make-instance 'human-player))
+         (p (generic-play x o t)))
+    (format t "~A~%" p)
+    (visualize p)
+    (format t "~A~%" (analyze p))
+    nil))
+
+
 (defmethod multi-nth ((ns list) (the-list list))
   (mapcar (lambda (n) (nth n the-list))
           ns))

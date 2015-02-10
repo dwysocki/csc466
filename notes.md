@@ -6,7 +6,7 @@ author: "Dan Wysocki"
 
 # General
 
-[Student Webpages]()
+[Student Webpages](http://www.cs.oswego.edu/~blue/courses/2015/SWS-S15.html)
 
 
 # Introduction
