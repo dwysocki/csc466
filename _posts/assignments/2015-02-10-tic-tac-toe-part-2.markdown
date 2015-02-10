@@ -19,8 +19,6 @@ date: 2015-02-10T14:20:00-05:00
 
 # Statistics
 
-There was a 58.5% win-rate for `X`, compared to a 28.9% win-rate for `O`,
-demonstrating that having first move contributes a significant amount to the
-win rate. These numbers are very close to `W=7/12`, `L=7/24`, `D=1/8`.
-A theoretical prediction of the probability of each outcome should be done,
-to see if these numbers are accurate.
+There was a 58.4% win-rate for `X`, compared to a 28.9% win-rate for `O`
+(and a 12.8% draw-rate), demonstrating that having first move contributes a
+significant amount to the win rate.

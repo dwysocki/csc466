@@ -98,7 +98,7 @@ O8║X5║X7
 W
 END GATHERING STATISTICS
 ((W 0.4) (L 0.6) (D 0.0))
-[6]> (stats 1000 nil)
-((W 0.581) (L 0.313) (D 0.106))
+[6]> (stats 100000 nil)
+((W 0.58389) (L 0.28851) (D 0.1276))
 [7]> (bye)
 Bye.
