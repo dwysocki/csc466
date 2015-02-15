@@ -1,0 +1,658 @@
+[1]> (load "ttt3.l")
+;; Loading file ttt3.l ...
+;; Loaded file ttt3.l
+T
+[2]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║X1
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║X1
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║X1
+══╬══╬══
+X3║  ║  
+══╬══╬══
+  ║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║X1
+══╬══╬══
+X3║  ║O4
+══╬══╬══
+  ║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+X5║  ║X1
+══╬══╬══
+X3║  ║O4
+══╬══╬══
+  ║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+X5║O6║X1
+══╬══╬══
+X3║  ║O4
+══╬══╬══
+  ║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+X5║O6║X1
+══╬══╬══
+X3║  ║O4
+══╬══╬══
+  ║O2║X7
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+(NE S W E NW N SE C)
+X5║O6║X1
+══╬══╬══
+X3║O8║O4
+══╬══╬══
+  ║O2║X7
+L
+NIL
+[3]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║O2║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║O2║X1
+══╬══╬══
+  ║X3║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+O4║O2║X1
+══╬══╬══
+  ║X3║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+O4║O2║X1
+══╬══╬══
+X5║X3║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+O6║  ║  
+══╬══╬══
+O4║O2║X1
+══╬══╬══
+X5║X3║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+(E C S W SW NW SE)
+O6║  ║  
+══╬══╬══
+O4║O2║X1
+══╬══╬══
+X5║X3║X7
+W
+NIL
+[4]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║X1║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║O2
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║X1║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║O2
+══╬══╬══
+  ║X3║  
+══╬══╬══
+  ║X1║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║O2
+══╬══╬══
+  ║X3║  
+══╬══╬══
+  ║X1║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║O2
+══╬══╬══
+  ║X3║  
+══╬══╬══
+X5║X1║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+(S NE C NW SW N)
+O4║O6║O2
+══╬══╬══
+  ║X3║  
+══╬══╬══
+X5║X1║  
+L
+NIL
+[5]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+X1║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+X1║  ║O2
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║  
+══╬══╬══
+X1║  ║O2
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+X1║  ║O2
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+X3║X5║O4
+══╬══╬══
+X1║  ║O2
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+X3║X5║O4
+══╬══╬══
+X1║O6║O2
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+X3║X5║O4
+══╬══╬══
+X1║O6║O2
+══╬══╬══
+  ║  ║X7
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+(W E NW NE N C SE SW)
+X3║X5║O4
+══╬══╬══
+X1║O6║O2
+══╬══╬══
+O8║  ║X7
+L
+NIL
+[6]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║  
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+  ║X5║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+  ║X5║O6
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+O2║  ║X1
+══╬══╬══
+X7║X5║O6
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+X3║  ║O4
+══╬══╬══
+O2║O8║X1
+══╬══╬══
+X7║X5║O6
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+(E W NW NE S SE SW C N)
+X3║X9║O4
+══╬══╬══
+O2║O8║X1
+══╬══╬══
+X7║X5║O6
+D
+NIL
+[7]> (demo-random-random)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+X1║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+X1║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║X3
+══╬══╬══
+X1║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║  
+══╬══╬══
+  ║  ║X3
+══╬══╬══
+X1║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║X5
+══╬══╬══
+  ║  ║X3
+══╬══╬══
+X1║O2║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║X5
+══╬══╬══
+  ║  ║X3
+══╬══╬══
+X1║O2║O6
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+O4║  ║X5
+══╬══╬══
+X7║  ║X3
+══╬══╬══
+X1║O2║O6
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting C for my move 
+END RANDOM PLAYER MOVE ...
+(SW S E NW NE SE W C)
+O4║  ║X5
+══╬══╬══
+X7║O8║X3
+══╬══╬══
+X1║O2║O6
+L
+NIL
+[8]> (demo-random-human)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NW N NE W C E SW S)
+nw
+END HUMAN PLAYER MOVE
+O2║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+O2║  ║  
+══╬══╬══
+  ║  ║X3
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (N NE W C SW S)
+c
+END HUMAN PLAYER MOVE
+O2║  ║  
+══╬══╬══
+  ║O4║X3
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SW for my move 
+END RANDOM PLAYER MOVE ...
+O2║  ║  
+══╬══╬══
+  ║O4║X3
+══╬══╬══
+X5║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (N NE W S)
+w
+END HUMAN PLAYER MOVE
+O2║  ║  
+══╬══╬══
+O6║O4║X3
+══╬══╬══
+X5║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+O2║X7║  
+══╬══╬══
+O6║O4║X3
+══╬══╬══
+X5║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NE S)
+s
+END HUMAN PLAYER MOVE
+O2║X7║  
+══╬══╬══
+O6║O4║X3
+══╬══╬══
+X5║O8║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+(SE NW E C SW W N S NE)
+O2║X7║X9
+══╬══╬══
+O6║O4║X3
+══╬══╬══
+X5║O8║X1
+W
+NIL
+[9]> (demo-random-human)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NW N NE W C E SW S)
+nw
+END HUMAN PLAYER MOVE
+O2║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting N for my move 
+END RANDOM PLAYER MOVE ...
+O2║X3║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NE W C E SW S)
+w
+END HUMAN PLAYER MOVE
+O2║X3║  
+══╬══╬══
+O4║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting E for my move 
+END RANDOM PLAYER MOVE ...
+O2║X3║  
+══╬══╬══
+O4║  ║X5
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NE C SW S)
+sw
+END HUMAN PLAYER MOVE
+(SE NW N W E SW)
+O2║X3║  
+══╬══╬══
+O4║  ║X5
+══╬══╬══
+O6║  ║X1
+L
+NIL
+[10]> (demo-random-human)
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║  
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting SE for my move 
+END RANDOM PLAYER MOVE ...
+  ║  ║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NW N NE W C E SW S)
+n
+END HUMAN PLAYER MOVE
+  ║O2║  
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NE for my move 
+END RANDOM PLAYER MOVE ...
+  ║O2║X3
+══╬══╬══
+  ║  ║  
+══╬══╬══
+  ║  ║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NW W C E SW S)
+e
+END HUMAN PLAYER MOVE
+  ║O2║X3
+══╬══╬══
+  ║  ║O4
+══╬══╬══
+  ║  ║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting S for my move 
+END RANDOM PLAYER MOVE ...
+  ║O2║X3
+══╬══╬══
+  ║  ║O4
+══╬══╬══
+  ║X5║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (NW W C SW)
+sw
+END HUMAN PLAYER MOVE
+  ║O2║X3
+══╬══╬══
+  ║  ║O4
+══╬══╬══
+O6║X5║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting NW for my move 
+END RANDOM PLAYER MOVE ...
+X7║O2║X3
+══╬══╬══
+  ║  ║O4
+══╬══╬══
+O6║X5║X1
+BEGIN HUMAN PLAYER MOVE ...
+Please select a move from (W C)
+c
+END HUMAN PLAYER MOVE
+X7║O2║X3
+══╬══╬══
+  ║O8║O4
+══╬══╬══
+O6║X5║X1
+BEGIN RANDOM PLAYER MOVE ...
+randomly selecting W for my move 
+END RANDOM PLAYER MOVE ...
+(SE N NE E S SW NW C W)
+X7║O2║X3
+══╬══╬══
+X9║O8║O4
+══╬══╬══
+O6║X5║X1
+D
+NIL
+[11]> (bye)
+Bye.

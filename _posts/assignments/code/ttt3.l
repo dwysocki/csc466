@@ -41,7 +41,7 @@
     (format t "BEGIN HUMAN PLAYER MOVE ...~%"))
   (format t "Please select a move from ~A~%" *avail*)
   (let ((move (read)))
-    (if (not (member move *avail))
+    (if (not (member move *avail*))
       (make-move p)
       (setf *avail* (remove move *avail*)))
     (when report
@@ -56,7 +56,10 @@
       (visualize *play-so-far*))
     (cond
      ((eq player 'x) (setf move (make-move x report)))
-     ((eq player 'o) (setf move (make-move o report)))))
+     ((eq player 'o) (setf move (make-move o report))))
+    (setf *play-so-far* (snoc move *play-so-far*))
+    (when (game-over-p *play-so-far*)
+      (return nil)))
   *play-so-far*)
 
 (defmethod game-over-p ((play list))
@@ -78,6 +81,16 @@
    ((null (cdr l)) ())
    (t (cons (cadr l)
             (even (cddr l))))))
+
+(defun line (&rest line)
+  (or (subsetp '(nw n ne) line)
+      (subsetp '( w c  e) line)
+      (subsetp '(sw s se) line)
+      (subsetp '(nw w sw) line)
+      (subsetp '(n  c s ) line)
+      (subsetp '(ne e se) line)
+      (subsetp '(nw c se) line)
+      (subsetp '(ne c sw) line)))
 
 (defmethod line-p ((l list))
   (cond
@@ -114,7 +127,7 @@
          (p (generic-play x o t)))
     (format t "~A~%" p)
     (visualize p)
-    (format t "~A~%" (analyze p))
+    (format t "~A~%" (game-over-p p))
     nil))
 
 (defmethod demo-random-human ()
@@ -123,7 +136,16 @@
          (p (generic-play x o t)))
     (format t "~A~%" p)
     (visualize p)
-    (format t "~A~%" (analyze p))
+    (format t "~A~%" (game-over-p p))
+    nil))
+
+(defmethod demo-human-random ()
+  (let* ((x (make-instance 'human-player))
+         (o (make-instance 'random-machine-player))
+         (p (generic-play x o t)))
+    (format t "~A~%" p)
+    (visualize p)
+    (format t "~A~%" (game-over-p p))
     nil))
 
 
@@ -194,13 +216,26 @@
                                             player-tokens
                                             move-numbers)))
     (mapcar #'cdr
-            (mapcar (lambda (location) (assoc location location-token-move))
+            (mapcar (lambda (location)
+                      (assoc location location-token-move))
+                    '(nw n ne
+                       w c  e
+                      sw s se)))))
+
+(defmethod sort-by-position* ((play list))
+  (let ((location-token-move (mapcar #'list play
+                                            player-tokens
+                                            move-numbers)))
+    (mapcar #'cdr
+            (mapcar (lambda (location)
+                      (or (assoc location location-token-move)
+                          (list location " " " ")))
                     '(nw n ne
                        w c  e
                       sw s se)))))
 
 (defmethod visualize ((play list))
-  (let ((positions (sort-by-position play)))
+  (let ((positions (sort-by-position* play)))
     (print-row (subseq positions 0 3))
     (print-row-sep)
     (print-row (subseq positions 3 6))
