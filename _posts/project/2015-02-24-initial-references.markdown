@@ -2,7 +2,7 @@
 layout: post
 category: project
 title: "Initial References"
-date: 2015-02-24T14:20:00-05:00
+date: 2015-02-24T14:20:01-05:00
 ---
 
 My initial references can be found in
