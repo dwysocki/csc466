@@ -71,9 +71,70 @@ Deadline: March 26, 2015
 {% highlight clojure %}
 (defn baum-welch
   "Returns the HMM which best fits the observations, with the given number of
-  states and observables.
+  states and observables."
   [observations n-states n-observables]
   ...)
 {% endhighlight %}
-- demo: run on sequences of MIDI notes, and use to generate new sequences
+- demo: inspect the transition matrices for some songs, and use in conjunction
+  with the backwards algorithm to test the similarities between several songs,
+  hopefully identifying songs as coming from the same composer
 
+
+# Song Generation
+
+Deadline: April 2, 2015
+
+- implement some method of song generation given an HMM
+- one possible approach is to use the Viterbi algorithm, which will find the
+  "most likely" song to be observed from the model
+- look for a less deterministic method, either by introducing randomness into
+  the Viterbi algorithm, or just a more appropriate method
+- demo: create songs from HMMs trained by several classical composers, and let
+  the class guess who the training composer is for each model
+
+
+# Chord Recognition
+
+Deadline: April 14, 2015
+
+- implement chord recognition through HMMs
+{% highlight clojure %}
+(ns hidden-markov-music.patterns)
+
+(defn midi->chords
+  "Returns a sequence of chords, given a sequence of midi notes"
+  [midi]
+  ...)
+{% endhighlight %}
+- demo: replace notes with chords in observations used for HMM training,
+  and repeat previous demo
+
+
+# Chord Progression Recognition
+
+Deadline: April 23, 2015
+
+- implement chord progression recognition through HMMs
+{% highlight clojure %}
+(ns hidden-markov-music.patterns)
+
+(defn chords->chord-progressions
+  "Returns a sequence of chord progressions, given a sequence of chords"
+  [chords]
+  ...)
+{% endhighlight %}
+- demo: repeat previous demo, replacing chords with chord progressions
+
+
+# GUI and Filters
+
+Deadline: April 30, 2015
+
+- create GUI for selecting different transformation functions, as well as
+  saving, loading, and training HMMs
+- create various output transformations
+    - map one genre's instruments to another's
+    - produce sheet music output for piano
+        - have a human play from the sheet music and record it
+- demo: show off GUI, and play around with various features, as well as playing
+  human recording
