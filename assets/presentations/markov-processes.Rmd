@@ -1,0 +1,377 @@
+---
+author: Daniel Wysocki
+title: Markov Processes
+date: March 12, 2015
+output:
+  beamer_presentation:
+    toc: true
+    theme: Madrid
+    colortheme: dolphin
+    fonttheme: serif
+    includes:
+      in_header: [markov-processes-header.tex]
+---
+
+# Stochastic Processes
+
+## Definition
+
+A stochastic process is a collection of random variables $\{ X(t), t \in T \}$
+defined on a common probability space indexed by the index set $T$ which
+describes the evolution of some system.
+
+[@resnick1992adventures]
+
+
+## Properties
+
+- the evolution of the system is non-deterministic, even if all initial
+  variables are known
+
+- the system may evolve in many (possibly infinite) ways
+
+- any given sequence of events may be assigned a probability
+
+- the probability of all possible sequences must sum to 1
+
+
+## History
+
+- early motivation for the theory of stochastic processes lies in Brownian
+  motion
+
+- Brownian motion was a phenomenon observed by Robert Brown in 1827
+
+    - he observed under a microscope the motions of pollen in a fluid
+
+    - the movements seemed unpredictable
+
+- Brownian motion is the outcome of many unpredictable or unobservable events,
+  each imparting a negligible influence on an observed phenomenon, but
+  collectively having a significant influence
+
+[@paul2013stochastic]
+
+
+## History (cont.)
+
+- Louis Bachelier made his PhD thesis in 1900, applying stochastic theory to
+  the price of financial assets
+
+    - the significance of his work was not realized until much later
+
+    - it contained many of the results of stochastic theory used today
+
+    - his advisor, Henri Poincaré, when trying to solve the Brownian motion
+      problem years later, did not realize Bachelier had already solved it
+
+[@paul2013stochastic]
+
+
+## History (cont.)
+
+- in his 1906 article in *Annals of Physics*, Albert Einstein described the
+  mechanisms which drive Brownian molecular motion
+
+- this helped strengthen the evidence for atoms and molecules
+
+- presented a method for measuring the size of the atom
+
+[@einstein1956investigations]
+
+
+## Markov Processes
+
+- a special case of stochastic processes
+
+- satisfy the property that the future is dependent only on the present,
+  not the past
+
+- may not be a perfect model of the underlying stochastic process, but often
+  serves as a good approximation, and reduces the complexity of the model
+
+[@resnick1992adventures]
+
+
+## History
+
+- Andrey Markov, a Russian mathematician, developed a technique, now known as
+  the Markov chain
+
+- he used it to discover patterns in the vowels and consonants of Alexander
+  Pushkin's novel, *Eugene Onegin*
+
+    - published a summary of his findings in an address to the Imperial
+      Academy of Sciences in St. Petersberg in 1913
+
+- though his work did little to understand the works of Pushkin, it started a
+  new branch of probability theory, in wide use today
+
+[@hayes2013first]
+
+
+# Markov Chains
+
+## Definition
+
+- Markov chains are Markov processes with a discrete index set $T$, and a
+  countable or finite state space
+
+- the Markov chain can be described by only two features: a 1-dimensional
+  initial probability distribution, $a(k)$, and a 2-dimensional transition
+  probability distribution, $p(i, j)$
+
+    - $a(k)$ is the probability that the first element of the chain is in state
+      $k$
+
+    - $p(i, j)$ is the probability that a system in state $i$ will transition
+      into $j$
+
+$$\sum_{k=1}^N a(k) = \sum_{j=1}^N p(i, j) = 1,$$
+where $N$ is the number of possible states
+
+[@resnick1992adventures]
+
+
+## Graph Representation
+
+A simple Markov process, with two states $A$ and $B$, can be represented by
+this graph
+
+\begin{figure}[H]
+\centering
+\markovchain
+\end{figure}
+
+
+## Training a Model
+
+- a Markov chain may be constructed by observing a sequence of events, and
+  constructing a transition frequency matrix and an initial frequency vector
+
+- then we normalize the two, such that the rows sum to 1
+
+    - row stochastic
+
+- consider the observed sequences $(A, A, B, A, B)$ and $(B, A, B, B, A)$
+
+$$
+\tilde{a} = \begin{bmatrix} 1 & 1 \end{bmatrix},
+\quad
+\tilde{p} = \begin{bmatrix} 1 & 3 \\ 1 & 3 \end{bmatrix}
+\implies
+a = \begin{bmatrix} 1/2 & 1/2 \end{bmatrix},
+\quad
+p = \begin{bmatrix} 1/4 & 3/4 \\ 1/4 & 3/4 \end{bmatrix}
+$$
+
+
+## Generating Sequences
+
+- once we have trained a model, we may use it to generate random sequences,
+  which we shall denote as $X$
+
+- we utilize a random number generator, and with probability $a(k)$ we choose
+  initial state $k$, so $X_0 = k$
+
+- subsequent states can be found recursively, such that we choose state
+  $X_n$ with probability $p(X_{n-1}, X_n)$
+
+
+## Graphical Sequence Generation
+
+We can envision the process of generating a sequence as traversing this graph.
+At each node, we use the associated transition probabilities to decide where
+to go next
+
+\begin{figure}[H]
+\centering
+\markovchain
+\end{figure}
+
+
+# Hidden Markov Models
+
+## Definition
+
+In a hidden Markov model, the states in the Markov chain are not observable,
+but instead there is a set of observables, which depend probabilisticly on the
+underlying (or hidden) Markov model.
+
+[@alpaydin2010introduction pg 367]
+
+
+## Graph Representation
+
+\begin{figure}[H]
+\centering
+\hiddenmarkovmodel
+\end{figure}
+
+
+## Parameters
+
+- a hidden Markov process can be parameterized by the following variables
+
+    - the states $S = \{ S_1, S_2, \ldots, S_N \}$
+
+    - the observation symbols $V = \{ v_1, v_2, \ldots, v_M \}$
+
+    - the state transition probabilities
+      $\mathbf{A} = [a_{ij}]
+       \text{, where }
+       a_{ij} = P(q_{t+1} = S_j | q_t = S_i)$
+
+    - the observation probabilities
+      $\mathbf{B} = [b_j(m)]
+       \text{, where }
+       b_j(m) = P(O_t = v_m | q_t = S_j)$
+
+    - the initial state probabilities
+      $\boldsymbol\Pi = [\pi_i]$ where $\pi_i = P(q_1 = S_i)$
+
+- the model itself is denoted
+  $\lambda = (\mathbf{A}, \mathbf{B}, \boldsymbol\Pi)$
+
+- the observation sequence is denoted $O = ( O_1, O_2, \ldots, O_T )$
+
+- the hidden state sequence is denoted $Q = ( q_1, q_2, \ldots, q_T )$
+
+
+## Traffic Light Markov Chain
+
+Suppose we want to model a traffic light as a Markov process. This can be done
+using a very simple Markov chain.
+
+There are 3 states,
+\textcolor{red}{red}, \textcolor{yellow}{yellow}, and \textcolor{green}{green}.
+Each state has 2 non-zero transition probabilities, either it remains the same,
+or changes in the progression
+\textcolor{green}{green} $\to$
+\textcolor{yellow}{yellow} $\to$
+\textcolor{red}{red} $\to$
+\textcolor{green}{green} ...
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex, auto, node distance = 3cm and 3cm, on grid,
+                    semithick,
+                    state/.style = {circle,
+                                    top color = white,
+                                    bottom color = black!80,
+                                    draw,
+                                    black,
+                                    text = black,
+                                    minimum width = 1.5 cm}]
+
+\node[state] (R) [bottom color = red] {Red};
+\node[state] (Y) [bottom color = yellow, right = of R] {Yellow};
+\node[state] (G) [bottom color = green, right = of Y] {Green};
+
+\path (G) edge [loop right] (G);
+\path (Y) edge [loop above] (Y);
+\path (R) edge [loop left]  (R);
+
+\path (G) edge [bend right = 15] (Y);
+\path (Y) edge [bend right = 15] (R);
+\path (R) edge [bend right = 25] (G);
+
+\end{tikzpicture}
+\end{figure}
+
+
+## Traffic Light HMM
+
+Suppose we want to model this same traffic light, but we only have a video
+stream from a sattelite. The sattelite cannot see the light itself, but can
+resolve the velocity of the moving cars, both in the same direction as the
+light, and the intersecting direction.
+
+The hidden states are
+\textcolor{red}{red}, \textcolor{yellow}{yellow}, and \textcolor{green}{green}.
+The observables are
+fast same direction ($\Updownarrow$),
+slow same direction ($\updownarrow$),
+fast intersecting direction ($\Leftrightarrow$),
+slow intersecting direction ($\leftrightarrow$),
+all stopped ($\otimes$).
+
+Assuming cars don't run red lights, the HMM might look something like.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex, auto, node distance = 1.5cm and 1.5cm, on grid,
+                    semithick,
+                    state/.style = {circle,
+                                    top color = white,
+                                    bottom color = black!80,
+                                    draw,
+                                    black,
+                                    text = black,
+                                    minimum width = 0.5 cm},
+                    obs/.style   = {rectangle,
+                                    top color = white,
+                                    bottom color = blue!40,
+                                    draw,
+                                    blue,
+                                    text = black,
+                                    minimum width = 0.5 cm}]
+
+\node[state] (R) [bottom color = red] {R};
+\node[state] (Y) [bottom color = yellow, right = of R] {Y};
+\node[state] (G) [bottom color = green, right = of Y] {G};
+
+\node[obs] (X) [below = of Y] {$\otimes$};
+\node[obs] (s) [right = of X] {$\updownarrow$};
+\node[obs] (S) [right = of s] {$\Updownarrow$};
+\node[obs] (i) [left = of X] {$\leftrightarrow$};
+\node[obs] (I) [left = of i] {$\Leftrightarrow$};
+
+\path (G) edge [loop right] (G);
+\path (Y) edge [loop above] (Y);
+\path (R) edge [loop left]  (R);
+
+\path (G) edge [bend right = 15] (Y);
+\path (Y) edge [bend right = 15] (R);
+\path (R) edge [bend right = 25] (G);
+
+\path (R) edge [bend right = 15, color = blue] (I);
+\path (R) edge [color = blue] (i);
+\path (R) edge [bend left = 15, color = blue] (X);
+
+\path (Y) edge [color = blue] (X);
+\path (Y) edge [bend right = 15, color = blue] (s);
+\path (Y) edge [bend left = 15, color = blue] (S);
+
+\path (G) edge [bend right = 15, color = blue] (X);
+\path (G) edge [color = blue] (s);
+\path (G) edge [bend left = 15, color = blue] (S);
+
+\end{tikzpicture}
+\end{figure}
+
+
+## Traffic Light HMM Problems
+
+Some common problems occur in HMMs, which have standard solutions.
+
+1. Given the model, $\lambda$, and a sequence of observations, $O$,
+   determine the likelihood of observing that sequence, $P(O | \lambda)$
+
+    - this is solved by the forward algorithm
+    - might be used to detect unusual traffic
+
+2. Given the model, $\lambda$, and a sequence of observations, $O$,
+   find an optimal state sequence $Q$
+
+    - this is solved by the backward algorithm
+    - this will tell us the most likely sequence of traffic light states
+
+3. Given an observation sequence, $O$, and the dimensions of the model,
+   $N$ and $M$, find the model $\lambda$ that maximizes the probability of
+   $O$
+
+    - this is solved by the Baum--Welch algorithm
+    - this is how we initially train the model
+
+[@stamp2012]
