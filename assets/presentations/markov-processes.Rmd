@@ -12,6 +12,12 @@ output:
       in_header: [markov-processes-header.tex]
 ---
 
+```{r echo=FALSE, message=FALSE}
+require(knitcitations)
+cleanbib()
+bib <- read.bibtex("markov-processes.bib")
+```
+
 # Stochastic Processes
 
 ## Definition
@@ -20,7 +26,7 @@ A stochastic process is a collection of random variables $\{ X(t), t \in T \}$
 defined on a common probability space indexed by the index set $T$ which
 describes the evolution of some system.
 
-[@resnick1992adventures]
+`r citep(bib[["resnick1992adventures"]])`
 
 
 ## Properties
@@ -50,7 +56,7 @@ describes the evolution of some system.
   each imparting a negligible influence on an observed phenomenon, but
   collectively having a significant influence
 
-[@paul2013stochastic]
+`r citep(bib[["paul2013stochastic"]])`
 
 
 ## History (cont.)
@@ -65,7 +71,7 @@ describes the evolution of some system.
     - his advisor, Henri Poincaré, when trying to solve the Brownian motion
       problem years later, did not realize Bachelier had already solved it
 
-[@paul2013stochastic]
+`r citep(bib[["paul2013stochastic"]])`
 
 
 ## History (cont.)
@@ -77,7 +83,7 @@ describes the evolution of some system.
 
 - presented a method for measuring the size of the atom
 
-[@einstein1956investigations]
+`r citep(bib[["einstein1956investigations"]])`
 
 
 ## Markov Processes
@@ -90,7 +96,7 @@ describes the evolution of some system.
 - may not be a perfect model of the underlying stochastic process, but often
   serves as a good approximation, and reduces the complexity of the model
 
-[@resnick1992adventures]
+`r citep(bib[["resnick1992adventures"]])`
 
 
 ## History
@@ -107,7 +113,7 @@ describes the evolution of some system.
 - though his work did little to understand the works of Pushkin, it started a
   new branch of probability theory, in wide use today
 
-[@hayes2013first]
+`r citep(bib[["hayes2013first"]])`
 
 
 # Markov Chains
@@ -130,7 +136,7 @@ describes the evolution of some system.
 $$\sum_{k=1}^N a(k) = \sum_{j=1}^N p(i, j) = 1,$$
 where $N$ is the number of possible states
 
-[@resnick1992adventures]
+`r citep(bib[["resnick1992adventures"]])`
 
 
 ## Graph Representation
@@ -194,11 +200,29 @@ to go next
 
 ## Definition
 
-In a hidden Markov model, the states in the Markov chain are not observable,
-but instead there is a set of observables, which depend probabilisticly on the
-underlying (or hidden) Markov model.
+In a hidden Markov model, the states in the Markov chain are not directly
+observable. However, there is a set of observables variables, which are
+somehow correlated with the underlying (or hidden) Markov chain.
 
-[@alpaydin2010introduction pg 367]
+`r citep(bib[["alpaydin2010introduction"]])`
+
+
+## History
+
+- early theory of HMMs developed by Leonard E. Baum and colleagues at the
+  Institute for Defense Analyses (IDA) in the 1960's
+
+- Jim Baker applied HMMs to speech recognition in the 1970's, but was not
+  100% successful
+
+- Jack Ferguson and colleagues at IDA gave a classical series of lectures in
+  1980, which boosted the popularity of HMMs
+
+- continued usage in speech recognition
+
+- now widely used in biological sequencing
+
+`r citep(list(bib[["rabinerIEEE"]], bib[["yoon2009hidden"]]))`
 
 
 ## Graph Representation
@@ -283,7 +307,7 @@ or changes in the progression
 ## Traffic Light HMM
 
 Suppose we want to model this same traffic light, but we only have a video
-stream from a sattelite. The sattelite cannot see the light itself, but can
+stream from a satellite. The satellite cannot see the light itself, but can
 resolve the velocity of the moving cars, both in the same direction as the
 light, and the intersecting direction.
 
@@ -351,7 +375,7 @@ Assuming cars don't run red lights, the HMM might look something like.
 \end{figure}
 
 
-## Traffic Light HMM Problems
+## Common HMM Problems
 
 Some common problems occur in HMMs, which have standard solutions.
 
@@ -374,4 +398,117 @@ Some common problems occur in HMMs, which have standard solutions.
     - this is solved by the Baum--Welch algorithm
     - this is how we initially train the model
 
-[@stamp2012]
+`r citep(bib[["stamp2012"]])`
+
+
+## Forward Algorithm
+
+1. Let $\alpha_0(i) = \pi_i b_i(O_0)$, for $i = 0, 1, \ldots, N-1$
+
+2. For $t = 1, 2, \ldots, T-1$ and $i = 0, 1, \ldots, N-1$, compute
+$$\alpha_t(i) = \left[
+  \sum_{j=0}^{N-1} \alpha_{t-1}(j) a_{ji}
+\right] b_i(O_t)$$
+
+3. Since $\alpha_t(i) = P(O_0, O_1, \ldots, O_t, x_t=q_i | \lambda)$,
+   it follows that
+$$P(O|\lambda) = \sum_{i=0}^{N-1} \alpha_{T-1}(i)$$
+
+`r citep(bib[["stamp2012"]])`
+
+
+## Backward Algorithm
+
+1. Let $\beta_{T-1}(i) = 1$, for $i = 0, 1, \ldots, N-1$.
+
+2. For $t = T-2, T-3, \ldots, 0$ and $i = 0, 1, \ldots, N-1$, compute
+$$\beta_t(i) = \sum_{j=0}^{N-1} a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)$$
+
+3. For $t = 0, 1, \ldots, T-2$ and $i = 0, 1, \ldots, N-1$, define
+   $\gamma_t(i) = P(x_t = q_i | O, \lambda)$,
+   which can be written as
+   $$\gamma_t(i) = \frac{\alpha_t(i) \beta_t(i)}{P(O | \lambda)}$$
+
+The most likely state at time $t$ is the state $q_i$ with maximum $\gamma_t(i)$.
+
+`r citep(bib[["stamp2012"]])`
+
+
+## Baum--Welch Algorithm
+
+- define "di-gamma" as
+$$
+\gamma_t(i, j) =
+\frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)}{P(O | \lambda)}
+$$
+- this is related to gamma by
+$$\gamma_t(i) = \sum_{j=0}^{N-1} \gamma_t(i, j)$$
+- given $\gamma$ and di-gamma, we can re-estimate a model using the following
+  procedure
+
+`r citep(bib[["stamp2012"]])`
+
+
+## Baum--Welch Algorithm
+
+1. for $i = 0, 1, \ldots, N-1$, let
+$$\pi_i = \gamma_0(i)$$
+2. for $i = 0, 1, \ldots, N-1$ and $j = 0, 1, \ldots, N-1$, compute
+$$
+a_{ij} =
+\frac{\sum_{t=0}^{T-2} \gamma_t(i, j)}{\sum_{t=0}^{T-2} \gamma_t(i)}
+$$
+3. for $j = 0, 1, \ldots, N-1$ and $k = O_0, O_1, \ldots, O_{M-1}$, compute
+$$
+b_j(k) =
+\frac{\sum_{\substack{t \in \{0, 1, \ldots, T-2 \} \\ O_t = k}} \gamma_t(j)}
+     {\sum_{t=0}^{T-2} \gamma_t(j)}
+$$
+
+`r citep(bib[["stamp2012"]])`
+
+
+## Baum--Welch Algorithm
+
+Now that $\gamma_t(i, j)$ and re-estimation have been defined, we can write
+the entire algorithm as
+
+1. initialize $\lambda = (A, B, \pi)$.
+
+2. compute $\alpha_t(i)$, $\beta_t(i)$, $\gamma_t(i, j)$ and $\gamma_t(i)$
+
+3. re-estimate the model according the the method just defined
+
+4. if $P(O | \lambda)$ increases by some threshold, or max iterations reached,
+   repeat from step 2
+
+`r citep(bib[["stamp2012"]])`
+
+
+## Hidden Markov Music
+
+- MIDI events (or some invertible function of them) are the observations
+
+- a musical piece is an observation sequence $O$
+
+- a model, $\lambda$, is trained on some set of musical pieces, $\mathbf{O}$
+
+- the hidden states are completely determined by the observations, and might
+  correspond to anything
+
+    - the only human intervention is in choosing the number of states, $N$
+
+- the forward algorithm can be used to find $P(O | \lambda)$ for a given piece,
+  which may be interpreted as how well it matches the model (classification)
+
+- new pieces may be generated from the model, by walking through the model,
+  making choices based on transition and emission probabilities
+
+
+---
+
+\small
+
+```{r, echo=FALSE, results='asis'}
+bibliography()
+```
