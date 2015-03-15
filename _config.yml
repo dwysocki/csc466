@@ -11,7 +11,7 @@ github_username: dwysocki
 # Build settings
 markdown: kramdown
 kramdown:
-  default_lang: common-lisp
+  default_lang: clojure
   use_coderay: true
 highlighter: pygments
 
