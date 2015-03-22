@@ -1,0 +1,102 @@
+---
+author: Dan Wysocki
+title: Hidden Markov Music
+date: April 15, 2015
+output:
+  beamer_presentation:
+    toc: true
+    theme: Madrid
+    colortheme: dolphin
+    fonttheme: serif
+    includes:
+      in_header: [hidden-markov-music-quest-header.tex]
+---
+
+```{r echo=FALSE, message=FALSE}
+require(knitcitations)
+cleanbib()
+bib <- read.bibtex("hidden-markov-music-quest.bib")
+```
+
+# Algorithmic Composition
+
+## Knowledge-based Systems
+
+- follow a set of rules defined by the programmer
+- depends on knowledge of the programmer
+
+## Machine Learning
+
+- existing compositions are used to create a model
+- new compositions are produced based on the model
+    - deterministic
+    - probabilistic
+- the challenge is in finding a model which captures the essence of music
+
+
+# Markov Processes
+
+## Definition
+
+- a Markov process is a system which can exist in a number of states
+- each state has a certain probability of transitioning into the next state
+- that probability is independent of the past states
+    - only the present matters
+- this may not perfectly represent the system being modeled, but it often
+  serves as a good approximation
+
+## Markov Chain
+
+- one of the simplest forms of a Markov process
+- *do the traffic light here*
+
+## Training a Markov Chain
+
+- *you know what to do*
+
+## Hidden Markov Model
+
+- often the states you wish to model cannot be observed directly
+- perhaps you do not even know what the states are
+- hidden Markov models are Markov chains where the states cannot be observed,
+  but each state has a certain probability of "emitting" one or more
+  observables
+
+## Hidden Markov Model Example
+
+- *do the traffic light here, and talk about Marvin the Martian or whatever*
+
+
+# Hidden Markov Music
+
+## Overview
+
+- we model songs as Markov processes
+- notes are observed
+- some underlying states are hidden from us
+- we use a number of songs from the same composer to train our model
+    - allows us to generate new music (algorithmic composition)
+    - allows us to compare existing songs against the model, to determine how
+      similar it is (classification)
+
+## Random Walk
+
+- *show a graph of a simplistic model and walk through it*
+
+## Audio Samples
+
+- *play a few audio samples here*
+- *perhaps start with one of my first creations (sounds terrible)*
+- *and then play some better samples (improvement!)*
+
+## Improvements
+
+- *talk about some more advanced models which may work better*
+
+## Thank You
+
+Questions?
+
+## Bonus Samples
+
+- *add some extra samples in case time permits*
