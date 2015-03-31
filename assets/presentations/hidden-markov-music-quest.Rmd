@@ -5,7 +5,7 @@ date: April 15, 2015
 output:
   beamer_presentation:
     toc: true
-    theme: Madrid
+    theme: CambridgeUS
     colortheme: dolphin
     fonttheme: serif
     includes:
