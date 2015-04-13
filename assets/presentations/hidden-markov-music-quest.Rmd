@@ -42,8 +42,8 @@ bib <- read.bibtex("hidden-markov-music-quest.bib")
 - each state has a certain probability of transitioning into the next state
 - that probability is independent of the past states
     - only the present matters
-- this may not perfectly represent the system being modeled, but it often
-  serves as a good approximation
+- may not perfectly represent the system being modeled
+    - often serves as a good approximation
 
 ## Markov Chain
 
@@ -52,19 +52,56 @@ bib <- read.bibtex("hidden-markov-music-quest.bib")
 
 ## Training a Markov Chain
 
-- *you know what to do*
+- to train a Markov chain, simply count the occurences of each transition
+- divide each element by its row's total
+
+\begin{figure}
+\begin{tabular}{r||c|c|c}
+& G & Y & R
+\\\hline\hline
+G & 45 & 5 & 0
+\\\hline
+Y & 0 & 25 & 25
+\\\hline
+R & 30 & 0 & 20
+\end{tabular}
+$\Rightarrow$
+\begin{tabular}{r||c|c|c}
+& G & Y & R
+\\\hline\hline
+G & 0.9 & 0.1 & 0
+\\\hline
+Y & 0 & 0.5 & 0.5
+\\\hline
+R & 0.6 & 0 & 0.4
+\end{tabular}
+\end{figure}
 
 ## Hidden Markov Model
 
-- often the states you wish to model cannot be observed directly
+- often the states cannot be observed directly (hidden)
 - perhaps you do not even know what the states are
-- hidden Markov models are Markov chains where the states cannot be observed,
-  but each state has a certain probability of "emitting" one or more
-  observables
+- hidden Markov models are Markov chains with hidden states
+    - each state has a certain probability of "emitting" one or more observables
 
 ## Hidden Markov Model Example
 
 - *do the traffic light here, and talk about Marvin the Martian or whatever*
+
+## Classic HMM Problems
+
+1. Given a model, we want to determine the likelihood of an observation
+   sequence
+    - forward and backward algorithms
+\pause
+2. Given a model and an observation sequence, we want to determine the most
+   likely sequence of hidden states
+    - Viterbi algorithm
+\pause
+3. Given a model and an observation sequence, we want to improve that model
+   (or train it) to fit the observations
+    - Baum--Welch algorithm
+
 
 
 # Hidden Markov Music
@@ -74,8 +111,8 @@ bib <- read.bibtex("hidden-markov-music-quest.bib")
 - we model songs as Markov processes
 - notes are observed
 - some underlying states are hidden from us
-- we use a number of songs from the same composer to train our model
-    - allows us to generate new music (algorithmic composition)
+- we train the model on a song
+    - allows us to generate new songs (algorithmic composition)
     - allows us to compare existing songs against the model, to determine how
       similar it is (classification)
 
@@ -83,19 +120,47 @@ bib <- read.bibtex("hidden-markov-music-quest.bib")
 
 - *show a graph of a simplistic model and walk through it*
 
+## First Song
+
+- trained a model on Twinkle, Twinkle, Little Star
+
+\movie{Twinkle, Twinkle, Little Star}{audio/twinkle.mp3}
+
+- produced the following song
+
+\movie{First Song}{audio/first-song.mp3}
+
+
+
 ## Audio Samples
 
 - *play a few audio samples here*
-- *perhaps start with one of my first creations (sounds terrible)*
-- *and then play some better samples (improvement!)*
 
-## Improvements
+## Composer Models
 
-- *talk about some more advanced models which may work better*
+- want to train models on composers, not just individual songs
+- Baum--Welch algorithm only works on a single song at a time
+- can join the songs together into one long one, but not ideal
+
+## Composer Model Training Issue
+
+- *display single and multiple song training side-by-side*
+
+## Acknowlegements
+
+Special thanks to Craig Graci, and Andrey Markov
 
 ## Thank You
 
-Questions?
+This project is free to download at
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.35\textwidth]{img/qr-github}
+
+  \href{https://github.com/dwysocki/hidden-markov-music}
+       {https://github.com/dwysocki/hidden-markov-music}
+\end{figure}
 
 ## Bonus Samples
 
