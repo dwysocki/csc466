@@ -33,7 +33,8 @@ I trained a model with 3 states on the beginning of Twinkle, Twinkle, Little Sta
 Here is what it sounds like played in key C
 
 <audio controls>
-<source src="{{site.baseurl}}/assets/audio/2015-04-12-first-song/twinkle-original.mp3"
+<source
+src="{{site.baseurl}}/assets/audio/2015-04-12-first-song/twinkle-original.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
