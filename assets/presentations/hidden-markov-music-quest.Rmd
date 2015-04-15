@@ -1,7 +1,6 @@
 ---
-author: Dan Wysocki
+author: Daniel Wysocki
 title: Hidden Markov Music
-date: April 15, 2015
 output:
   beamer_presentation:
     theme: CambridgeUS
@@ -120,13 +119,25 @@ R & 0.6 & 0 & 0.4
 
 - produced the following song
 
-\movie{First Song}{audio/first-song.mp3}
+\includemedia[
+  addresource=first-song.mp3,
+  flashvars={
+    source=first-song.mp3
+   &autoPlay=true
+  }
+]{\fbox{Play}}{APlayer.swf}
+
+\sound{First Song}{first-song.mp3}
 
 
 
-## Audio Samples
+## Für Elise
 
-- *play a few audio samples here*
+- trained a model on Beethoven's Für Elise
+
+- using 5 states
+
+- using 15 states
 
 ## Composer Models
 
@@ -145,10 +156,10 @@ Special thanks to Craig Graci, and Andrey Markov
 Listen to more pieces here
 \begin{figure}[b]
   \centering
-  \includegraphics[width=0.35\textwidth]{img/qr-pieces}
+  \includegraphics[width=0.35\textwidth]{img/qr-music}
 
-  \href{https://dwysocki.github.io/csc466/pieces.html}
-       {https://dwysocki.github.io/csc466/pieces.html}
+  \href{https://dwysocki.github.io/csc466/music.html}
+       {https://dwysocki.github.io/csc466/music.html}
 \end{figure}
 
 ## Bonus Samples
