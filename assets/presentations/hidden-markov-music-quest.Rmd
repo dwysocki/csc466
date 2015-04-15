@@ -114,40 +114,25 @@ R & 0.6 & 0 & 0.4
 ## First Song
 
 - trained a model on Twinkle, Twinkle, Little Star
-
-\includemedia[
-  addresource=twinkle.mp3,
-  flashvars={
-    source=twinkle.mp3
-   &autoPlay=true
-  }
-]{\fbox{Play}}{APlayer.swf}
+  \playsong{twinkle.mp3}
 
 - produced the following song
-
-\includemedia[
-  addresource=first-song.mp3,
-  flashvars={
-    source=first-song.mp3
-   &autoPlay=true
-  }
-]{\fbox{Play}}{APlayer.swf}
+  \playsong{first-song.mp3}
 
 
 
 ## Für Elise
 
-- trained a model on Beethoven's Für Elise
+- trained a model on Beethoven's Für Elise \playsong{elise.mp3}
 
-- using 5 states
+- using 5 states \playsong{elise5.mp3}
 
-- using 15 states
+- using 15 states \playsong{elise15.mp3}
 
-## Composer Models
+## Future Improvements
 
-- want to train models on composers, not just individual songs
-- training algorithm only works on a single song at a time
-- can join the songs together, but loses information
+- incorporate duration into the notes in an intelligent way
+- combine songs from multiple composers into a single model
 
 
 ## Acknowlegements
@@ -157,7 +142,7 @@ Special thanks to Craig Graci, and Andrey Markov
 
 ## Questions?
 
-Listen to more pieces here
+Listen to more here
 \begin{figure}[b]
   \centering
   \includegraphics[width=0.35\textwidth]{img/qr-music}
@@ -165,7 +150,3 @@ Listen to more pieces here
   \href{https://dwysocki.github.io/csc466/music.html}
        {https://dwysocki.github.io/csc466/music.html}
 \end{figure}
-
-## Bonus Samples
-
-- *add some extra samples in case time permits*

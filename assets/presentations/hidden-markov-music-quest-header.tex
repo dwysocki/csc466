@@ -11,6 +11,16 @@
 \usepackage{multimedia}
 \usepackage{media9}
 
+\newcommand{\playsong}[1]{
+\includemedia[
+  addresource=#1,
+  flashvars={
+    source=#1
+   &autoPlay=true
+  }
+]{\fbox{Play}}{APlayer.swf}
+}
+
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
