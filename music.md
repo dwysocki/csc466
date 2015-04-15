@@ -43,11 +43,24 @@ type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
+*Using 5 states*
+
 *Composition 1*
 
 <audio controls>
 <source
-src="{{site.baseurl}}/assets/audio/elise/elise1.mp3"
+src="{{site.baseurl}}/assets/audio/elise/elise5-0.mp3"
+type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+**Using 15 states**
+
+*Composition 1*
+
+<audio controls>
+<source
+src="{{site.baseurl}}/assets/audio/elise/elise15-0.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
@@ -56,7 +69,7 @@ Your browser does not support the audio element.
 
 <audio controls>
 <source
-src="{{site.baseurl}}/assets/audio/elise/elise2.mp3"
+src="{{site.baseurl}}/assets/audio/elise/elise15-1.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
@@ -65,7 +78,7 @@ Your browser does not support the audio element.
 
 <audio controls>
 <source
-src="{{site.baseurl}}/assets/audio/elise/elise3.mp3"
+src="{{site.baseurl}}/assets/audio/elise/elise15-2.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
