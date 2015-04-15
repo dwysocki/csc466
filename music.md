@@ -43,7 +43,7 @@ type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
-*Using 5 states*
+**Using 5 states**
 
 *Composition 1*
 
