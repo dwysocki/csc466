@@ -116,9 +116,9 @@ R & 0.6 & 0 & 0.4
 - trained a model on Twinkle, Twinkle, Little Star
 
 \includemedia[
-  addresource={audio/twinkle.mp3},
+  addresource=twinkle.mp3,
   flashvars={
-    source={audio/twinkle.mp3}
+    source=twinkle.mp3
    &autoPlay=true
   }
 ]{\fbox{Play}}{APlayer.swf}
@@ -126,9 +126,9 @@ R & 0.6 & 0 & 0.4
 - produced the following song
 
 \includemedia[
-  addresource={audio/first-song.mp3},
+  addresource=first-song.mp3,
   flashvars={
-    source={audio/first-song.mp3}
+    source=first-song.mp3
    &autoPlay=true
   }
 ]{\fbox{Play}}{APlayer.swf}
