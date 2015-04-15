@@ -4,7 +4,6 @@ title: Hidden Markov Music
 date: April 15, 2015
 output:
   beamer_presentation:
-    toc: true
     theme: CambridgeUS
     colortheme: dolphin
     fonttheme: serif
@@ -31,24 +30,24 @@ bib <- read.bibtex("hidden-markov-music-quest.bib")
 - new compositions are produced based on the model
     - deterministic
     - probabilistic
-- the challenge is in finding a model which captures the essence of music
+- challenging to find a model which captures the essence of music
 
 
 # Markov Processes
 
 ## Definition
 
-- a Markov process is a system which can exist in a number of states
-- each state has a certain probability of transitioning into the next state
-- that probability is independent of the past states
-    - only the present matters
+- the future depends only on the present
+- nondeterministic
 - may not perfectly represent the system being modeled
     - often serves as a good approximation
 
 ## Markov Chain
 
-- one of the simplest forms of a Markov process
-- *do the traffic light here*
+\begin{figure}
+\centering
+\markovchain
+\end{figure}
 
 ## Training a Markov Chain
 
@@ -77,31 +76,21 @@ R & 0.6 & 0 & 0.4
 \end{tabular}
 \end{figure}
 
+
 ## Hidden Markov Model
 
-- often the states cannot be observed directly (hidden)
-- perhaps you do not even know what the states are
-- hidden Markov models are Markov chains with hidden states
-    - each state has a certain probability of "emitting" one or more observables
+- Marvin the Martian is looking down at a traffic light from space
+- he cannot see the actual lights, but instead he sees the speed and direction
+  of the cars
+- he can still model the traffic light, using an HMM
+
 
 ## Hidden Markov Model Example
 
-- *do the traffic light here, and talk about Marvin the Martian or whatever*
-
-## Classic HMM Problems
-
-1. Given a model, we want to determine the likelihood of an observation
-   sequence
-    - forward and backward algorithms
-\pause
-2. Given a model and an observation sequence, we want to determine the most
-   likely sequence of hidden states
-    - Viterbi algorithm
-\pause
-3. Given a model and an observation sequence, we want to improve that model
-   (or train it) to fit the observations
-    - Baum--Welch algorithm
-
+\begin{figure}
+\centering
+\hiddenmarkovmodel
+\end{figure}
 
 
 # Hidden Markov Music
@@ -110,15 +99,18 @@ R & 0.6 & 0 & 0.4
 
 - we model songs as Markov processes
 - notes are observed
-- some underlying states are hidden from us
+- some underlying states of the song are hidden from us
+    - we choose the number of states, and everything else is automatic
 - we train the model on a song
     - allows us to generate new songs (algorithmic composition)
-    - allows us to compare existing songs against the model, to determine how
-      similar it is (classification)
 
-## Random Walk
 
-- *show a graph of a simplistic model and walk through it*
+## Model
+
+\begin{figure}
+\centering
+\hiddenmarkovmusic
+\end{figure}
 
 ## First Song
 
@@ -139,27 +131,24 @@ R & 0.6 & 0 & 0.4
 ## Composer Models
 
 - want to train models on composers, not just individual songs
-- Baum--Welch algorithm only works on a single song at a time
-- can join the songs together into one long one, but not ideal
+- training algorithm only works on a single song at a time
+- can join the songs together, but loses information
 
-## Composer Model Training Issue
-
-- *display single and multiple song training side-by-side*
 
 ## Acknowlegements
 
 Special thanks to Craig Graci, and Andrey Markov
 
-## Thank You
 
-This project is free to download at
+## Questions?
 
+Listen to more pieces here
 \begin{figure}[b]
   \centering
-  \includegraphics[width=0.35\textwidth]{img/qr-github}
+  \includegraphics[width=0.35\textwidth]{img/qr-pieces}
 
-  \href{https://github.com/dwysocki/hidden-markov-music}
-       {https://github.com/dwysocki/hidden-markov-music}
+  \href{https://dwysocki.github.io/csc466/pieces.html}
+       {https://dwysocki.github.io/csc466/pieces.html}
 \end{figure}
 
 ## Bonus Samples
