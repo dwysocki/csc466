@@ -82,3 +82,46 @@ src="{{site.baseurl}}/assets/audio/elise/elise15-2.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
+
+
+# Super Mario Bros Theme
+
+(Source: <http://www.midishrine.com/index.php?id=58>)
+
+*Original Song*
+
+<audio controls>
+<source
+src="{{site.baseurl}}/assets/audio/mario-bros/mario-bros.mp3"
+type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+**Using 15 states**
+
+*Composition 1*
+
+<audio controls>
+<source
+src="{{site.baseurl}}/assets/audio/mario-bros/mario-bros15-0.mp3"
+type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+*Composition 2*
+
+<audio controls>
+<source
+src="{{site.baseurl}}/assets/audio/mario-bros/mario-bros15-1.mp3"
+type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+*Composition 3*
+
+<audio controls>
+<source
+src="{{site.baseurl}}/assets/audio/mario-bros/mario-bros15-2.mp3"
+type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
