@@ -99,6 +99,9 @@ Your browser does not support the audio element.
 
 **Using 15 states**
 
+Interestingly, all 3 of these compositions eventually got stuck repeating the same note until the end of the song, where they abruptly end.
+
+
 *Composition 1*
 
 <audio controls>
