@@ -43,7 +43,9 @@ type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
-**Using 5 states**
+## Without note durations considered
+
+### 5 states
 
 *Composition 1*
 
@@ -54,7 +56,7 @@ type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
-**Using 15 states**
+### 15 states
 
 *Composition 1*
 
@@ -82,6 +84,13 @@ src="{{site.baseurl}}/assets/audio/elise/elise15-2.mp3"
 type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
+
+
+## With note durations considered
+
+
+
+
 
 
 # Super Mario Bros Theme
