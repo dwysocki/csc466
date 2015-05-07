@@ -1,0 +1,225 @@
+---
+author: Daniel Wysocki
+title: Hidden Markov Music
+date: May 7, 2015
+output:
+  beamer_presentation:
+    theme: CambridgeUS
+    colortheme: dolphin
+    fonttheme: serif
+    includes:
+      in_header: [hidden-markov-music-final-header.tex]
+---
+
+# Algorithmic Composition
+
+## Knowledge-based Systems
+
+- follow a set of rules defined by the programmer
+- depends on knowledge of the programmer
+
+## Machine Learning
+
+- existing compositions are used to create a model
+- new compositions are produced based on the model
+    - deterministic
+    - probabilistic
+- challenging to find a model which captures the essence of music
+
+
+
+# Markov Processes
+
+## Definition
+
+- the future depends only on the present
+- nondeterministic
+- may not perfectly represent the system being modeled
+    - often serves as a good approximation
+
+
+## Markov Chain
+
+\begin{figure}
+\centering
+\markovchain
+\end{figure}
+
+
+## Training a Markov Chain
+
+- to train a Markov chain, simply count the occurences of each transition
+- divide each element by its row's total
+
+\begin{figure}
+\begin{tabular}{r||c|c|c}
+& G & Y & R
+\\\hline\hline
+G & 45 & 5 & 0
+\\\hline
+Y & 0 & 25 & 25
+\\\hline
+R & 30 & 0 & 20
+\end{tabular}
+$\Rightarrow$
+\begin{tabular}{r||c|c|c}
+& G & Y & R
+\\\hline\hline
+G & 0.9 & 0.1 & 0
+\\\hline
+Y & 0 & 0.5 & 0.5
+\\\hline
+R & 0.6 & 0 & 0.4
+\end{tabular}
+\end{figure}
+
+
+## Hidden Markov Model
+
+- Marvin the Martian is looking down at a traffic light from space
+- he cannot see the actual lights, but instead he sees the speed and direction
+  of the cars
+- he can still model the traffic light, using an HMM
+
+
+## Hidden Markov Model Example
+
+\begin{figure}
+\centering
+\hiddenmarkovmodel
+\end{figure}
+
+
+
+# Hidden Markov Music
+
+## Overview
+
+- we model songs as Markov processes
+- notes are observed
+- some underlying states of the song are hidden from us
+    - we choose the number of states, and everything else is automatic
+- we train the model on a song
+    - allows us to generate new songs (algorithmic composition)
+
+
+## Model
+
+\begin{figure}
+\centering
+\hiddenmarkovmusic
+\end{figure}
+
+
+## Hello Hello Little World
+
+- trained a model on Twinkle, Twinkle, Little Star
+  \playsong{twinkle.mp3}
+
+- produced the following song
+  \playsong{first-song.mp3}
+
+
+## Für Elise (melody only)
+
+- trained a model on Beethoven's Für Elise \playsong{elise.mp3}
+
+- using 5 states \playsong{elise5.mp3}
+
+- using 15 states \playsong{elise15.mp3}
+
+
+## Für Elise (melody and duration)
+
+- 50 states \playsong{elise_50_duration.mp3}
+- 100 states \playsong{elise_100_duration.mp3}
+
+
+## Korobeiniki (the Tetris song)
+
+\playsong{tetris.mp3}
+
+- 50 states \playsong{tetris_50.mp3}
+- 100 states \playsong{tetris_100.mp3}
+
+
+
+# Model Analysis
+
+## State Probability Distributions
+
+- any given state may *possibly* transition to any other state, and emit any
+  note
+- in practice, only a few are probable
+- classify states according the number of probable transitions and emissions
+    - classify songs according to their states
+
+
+## Types of States
+
+- transition type
+    - linear progression
+    - branch
+- emission type
+    - single note
+    - multi note
+
+
+## Transition Types
+
+$$t = \textrm{\# probable transitions}$$
+
+\begin{figure}
+\transitiontypes
+\end{figure}
+
+
+## Emission Types
+
+$$e = \textrm{\# probable emissions}$$
+
+\begin{figure}
+\emissiontypes
+\end{figure}
+
+
+## Song Signatures
+
+\begin{gather*}
+\vb{e} = \left\langle e_1, e_2, e_3, \ldots \right\rangle,
+\quad\quad\quad
+\vb{t} = \left\langle t_1, t_2, t_3, \ldots \right\rangle
+\\\\
+e_i = \frac{\textrm{\# states with } e = i}{\textrm{total \# states}},
+\quad\quad
+t_i = \frac{\textrm{\# states with } t = i}{\textrm{total \# states}}
+\\\\
+\mathcal{S} = (\vb{e}, \vb{t})
+\end{gather*}
+
+
+## Song Comparison
+
+- create a model for each song
+    - use some criterion for determining # states
+        - Akaike information criterion (AIC)
+        - Bayesian information criterion (BIC)
+- measure the angles between the vectors in their signature $\mathcal{S}$
+    - cosine distance
+
+
+## Acknowlegements
+
+Special thanks to Craig Graci, and Andrey Markov
+
+
+## Questions?
+
+Listen to more here
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.35\textwidth]{img/qr-music}
+
+  \href{https://dwysocki.github.io/csc466/music.html}
+       {https://dwysocki.github.io/csc466/music.html}
+\end{figure}
