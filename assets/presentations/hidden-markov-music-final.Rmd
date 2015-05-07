@@ -190,9 +190,9 @@ $$e = \textrm{\# probable emissions}$$
 \quad\quad\quad
 \vb{t} = \left\langle t_1, t_2, t_3, \ldots \right\rangle
 \\\\
-e_i = \frac{\textrm{\# states with } e = i}{\textrm{total \# states}},
+e_i = \textrm{\# states with } e = i,
 \quad\quad
-t_i = \frac{\textrm{\# states with } t = i}{\textrm{total \# states}}
+t_i = \textrm{\# states with } t = i
 \\\\
 \mathcal{S} = (\vb{e}, \vb{t})
 \end{gather*}
