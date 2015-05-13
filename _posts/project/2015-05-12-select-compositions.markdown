@@ -9,6 +9,7 @@ permalink: /simple_compositions/
 {% assign songs = "auld-lang-syne,barbara-allen,frere-jacques,happy-birthday,im-a-little-teapot,mary-had-a-little-lamb,scarborough-fair,this-old-man,three-blind-mice,twinkle-twinkle-little-star" | split: "," %}
 
 {% for song in {{songs}} %}
+{{ song | replace:"-"," " | capitalize}}
 {% for i in (0..9) %}
 <audio controls>
   <source
