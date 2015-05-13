@@ -16,5 +16,6 @@ permalink: /simple_compositions/
     type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+
 {% endfor %}
 {% endfor %}
