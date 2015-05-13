@@ -12,7 +12,7 @@ permalink: /simple_compositions/
 {% for i in (0..9) %}
 <audio controls>
   <source
-    src="{{site.baseurl}}/assets/audio/simple_compositions/{{song}}_{{i}}.mp3"
+    src="{{site.baseurl}}/assets/audio/simple-compositions/{{song}}_{{i}}.mp3"
     type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
